@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ConstantPool } from '@angular/compiler';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
 	selector: 'app-title',
@@ -6,6 +7,19 @@ import { Component } from '@angular/core';
 	templateUrl: './title.html',
 	styleUrl: './title.scss'
 })
-export class Title {
+export class Title implements OnInit, OnChanges {
+
+	@Input() nome: string | undefined;
+
+	constructor() {
+		console.log(`Constructor ${this.nome}`);
+	}
+	ngOnChanges(changes: SimpleChanges): void {
+		console.log(`OnChange ${this.nome}`);
+	}
+
+	ngOnInit(): void {
+		console.log(`OnInit ${this.nome}`);
+	}
 
 }
